@@ -12,3 +12,6 @@ docker-machine env manager1
 docker $(docker-machine config manager1) swarm init --advertise-addr $(docker-machine ip manager1)
 sudo docker network create --driver overlay my_network
 sudo docker service create --name=accountservice --replicas=1 --network=my_network -p=6767:6767 dasetova/accountservice
+
+### Scale the service to more replicas in docker swarm
+sudo docker service scale accountservice=3
